@@ -10,6 +10,7 @@ const WS_READY_STATE_CLOSING: number = 2
 export async function GetVlessConfigList(sni: string, addressList: Array<string>, env: Env) {
   const uuid: string | null = await env.settings.get("UUID")
   var configList: Array<Config> = []
+	console.log(env)
   console.log(addressList)
   if (uuid) {
     for (var i = 0; i < 10; i++) {
@@ -66,7 +67,7 @@ export async function VlessOverWSHandler(request: Request, env: Env) {
 				vlessVersion = new Uint8Array([0, 0]),
 				isUDP,
 			} = ProcessVlessHeader(chunk, uuid)
-			
+
       address = addressRemote
 			portWithRandomLog = `${portRemote}--${Math.random()} ${isUDP ? 'udp ' : 'tcp '} `
 			if (hasError) {
@@ -126,7 +127,7 @@ function MakeReadableWebSocketStream(webSocketServer: WebSocket, earlyDataHeader
 			})
 
 			const {earlyData, error}: CustomArrayBuffer = Base64ToArrayBuffer(earlyDataHeader)
-			
+
       if (error) {
 				controller.error(error)
 			} else if (earlyData) {
@@ -156,7 +157,7 @@ function ProcessVlessHeader(vlessBuffer: ArrayBuffer, uuid: string): VlessHeader
 	const version: Uint8Array = new Uint8Array(vlessBuffer.slice(0, 1))
 	var isValidUser: boolean = false
 	var isUDP: boolean = false
-	
+
   if (Stringify(new Uint8Array(vlessBuffer.slice(1, 17))) === uuid) {
 		isValidUser = true
 	}
@@ -197,7 +198,7 @@ function ProcessVlessHeader(vlessBuffer: ArrayBuffer, uuid: string): VlessHeader
 	var addressLength: number = 0
 	var addressValueIndex: number = addressIndex + 1
 	var addressValue: string = ""
-	
+
   switch (addressType) {
 		case 1:
 			addressLength = 4
