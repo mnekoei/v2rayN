@@ -8,7 +8,7 @@ Total solution for v2ray configs over Cloudflare's worker
 
 To be completed...
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/HarlyquinForest/v2ray-worker-otn)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/mnekoei/v2rayN)
 
 ### Credits
 
